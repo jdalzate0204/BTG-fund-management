@@ -8,5 +8,8 @@ import { ImageComponent } from '../../atoms/image/image.component';
   styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
+  /**
+   * Footer logo image path
+   */
   btgLogo: string = 'graphics/btg-logo-white.svg';
 }

@@ -7,6 +7,11 @@ import { MOCK_FOUNDS } from '../utils/mocks';
   providedIn: 'root',
 })
 export class FoundsService {
+  /**
+   * Get list of funds
+   * Returns an observable emitting mock fund data with 1-second delay
+   * @return Observable<FoundsResponse[]> Array of fund objects
+   */
   getFounds(): Observable<FoundsResponse[]> {
     return of(MOCK_FOUNDS).pipe(delay(1000));
   }

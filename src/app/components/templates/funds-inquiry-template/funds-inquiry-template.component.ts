@@ -14,16 +14,36 @@ import { ModalTransactionHistoryComponent } from '../../molecules/modal-transact
   styleUrl: './funds-inquiry-template.component.scss',
 })
 export class FundsInquiryTemplateComponent implements OnInit {
+  /**
+   * Table columns headers
+   */
   columnsTable: string[] = ['Nombre', 'Monto mímimo', 'Categoría', 'Estado', 'Suscribir', 'Cancelar'];
+  /**
+   * Table data for funds
+   */
   foundsTable: FoundsUI[] = [];
+  /**
+   * Flag to indicate if transaction history modal is open
+   */
   isOpenHistory: boolean = false;
 
+  /**
+   * Constructor
+   * @param foundsService Service to fetch fund data
+   * @param balanceService Service to manage user balance
+   * @param transactionService Service to manage transaction history
+   */
   constructor(
     private foundsService: FoundsService,
     private balanceService: BalanceService,
     private transactionService: TransactionService,
   ) {}
 
+  /**
+   * OnInit lifecycle hook
+   * Fetches funds and initializes the table
+   * @return void
+   */
   ngOnInit(): void {
     this.foundsService.getFounds().subscribe((resp) => {
       this.foundsTable = resp.map((data) => ({
@@ -33,6 +53,12 @@ export class FundsInquiryTemplateComponent implements OnInit {
     });
   }
 
+  /**
+   * Handle subscription to a fund
+   * Validates user balance, asks for notification method, updates table and transactions
+   * @param found FoundsUI object representing the selected fund
+   * @return void
+   */
   onSuscribe(found: FoundsUI) {
     if (this.balanceService.currentBalance < found.montoMinimo) {
       alert(
@@ -68,6 +94,12 @@ export class FundsInquiryTemplateComponent implements OnInit {
     });
   }
 
+  /**
+   * Handle cancellation of a fund subscription
+   * Confirms cancellation, updates table and transaction history
+   * @param found FoundsUI object representing the selected fund
+   * @return void
+   */
   onCancel(found: FoundsUI) {
     const cancel = confirm(
       'Está apunto de cancelar su suscripción al fondo ' +
@@ -89,10 +121,18 @@ export class FundsInquiryTemplateComponent implements OnInit {
     }
   }
 
+  /**
+   * Open transaction history modal
+   * @return void
+   */
   openHistory() {
     this.isOpenHistory = true;
   }
 
+  /**
+   * Close transaction history modal
+   * @return void
+   */
   closeHistory() {
     this.isOpenHistory = false;
   }

@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './loader.component.scss',
 })
 export class LoaderComponent {
+  /**
+   * Loader image path
+   */
   imgLoader: string = 'graphics/ajax-loader.gif';
 }

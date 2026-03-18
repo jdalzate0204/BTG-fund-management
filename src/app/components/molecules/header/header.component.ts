@@ -15,10 +15,26 @@ import { BalanceService } from '../../../services/balance.service';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  /**
+   * Loader activation event
+   */
   @Output() isActiveLoader = new EventEmitter<boolean>();
+  /**
+   * Observable for user login status
+   */
   isLoggedIn$: Observable<boolean>;
+  /**
+   * Observable for user balance
+   */
   balance$: Observable<number>;
 
+  /**
+   * Constructor
+   * Initializes observables for login status and balance
+   * @param router Angular Router to navigate between routes
+   * @param authService Authentication service for login/logout
+   * @param balanceService Service providing user balance data
+   */
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -28,6 +44,13 @@ export class HeaderComponent {
     this.balance$ = this.balanceService.balance$;
   }
 
+  /**
+   * Handle action button click
+   * Performs login if user is not logged in, otherwise logs out
+   * Navigates to the appropriate route after action
+   * @param isLoggedIn boolean indicating if the user is currently logged in
+   * @return void
+   */
   actionButton(isLoggedIn: boolean) {
     this.isActiveLoader.emit(true);
     if (!isLoggedIn) {
