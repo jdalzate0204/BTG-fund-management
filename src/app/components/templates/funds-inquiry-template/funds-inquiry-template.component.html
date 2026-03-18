@@ -1,0 +1,20 @@
+@if (isOpenHistory) {
+  <btg-modal-transaction-history (handleClose)="closeHistory()"></btg-modal-transaction-history>
+}
+<div class="container">
+  <div class="container-btn">
+    <div class="btn">
+      <btg-button [textButton]="'Historial de transacciones'" (handleClick)="openHistory()"></btg-button>
+    </div>
+  </div>
+
+  <h1>Administración de fondos</h1>
+  <div class="content-table">
+    <btg-table
+      [columns]="columnsTable"
+      [founds]="foundsTable"
+      (handleSuscribe)="onSuscribe($event)"
+      (handleCancel)="onCancel($event)"
+    ></btg-table>
+  </div>
+</div>

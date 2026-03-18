@@ -1,0 +1,45 @@
+@use '../../../../style/tools/breakpoints.scss' as *;
+
+.container {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  background-color: var(--fixed-white);
+
+  @include for-mobile {
+    padding: 0 10px;
+  }
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 122px;
+  height: 48px;
+
+  @include for-mobile {
+    width: 80px;
+    top: 8px;
+    position: relative;
+  }
+}
+
+.button {
+  width: 118px;
+}
+
+p {
+  font-family: 'moderat-light';
+  font-size: 20px;
+  align-items: center;
+  display: flex;
+
+  @include for-mobile {
+    font-size: 12px;
+  }
+}

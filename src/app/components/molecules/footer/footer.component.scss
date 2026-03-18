@@ -1,0 +1,21 @@
+.container {
+  height: 100px;
+  background-color: var(--background-footer);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 28px;
+  position: relative;
+}
+
+.logo {
+  width: 100px;
+}
+
+p {
+  margin-top: 15px;
+  font-family: 'moderat-light';
+  font-size: 12px;
+  color: #ffffffb2;
+}

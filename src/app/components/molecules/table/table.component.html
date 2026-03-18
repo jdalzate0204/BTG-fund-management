@@ -1,0 +1,58 @@
+@if (!isMobile) {
+  <table>
+    <thead>
+      <tr>
+        @for (column of columns; track $index) {
+          <th>{{ column }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (found of founds; track found.id) {
+        <tr>
+          <td>{{ found.nombre }}</td>
+          <td>${{ found.montoMinimo | numberFormat }}</td>
+          <td>{{ found.categoria }}</td>
+          <td>{{ found.suscrito ? 'Suscrito' : 'No suscrito' }}</td>
+          <td>
+            <div class="container-btn">
+              @if (!found.suscrito) {
+                <btg-image [src]="'icons/person_check.svg'" (click)="onSuscribe(found)"></btg-image>
+              }
+            </div>
+          </td>
+          <td>
+            <div class="container-btn">
+              @if (found.suscrito) {
+                <btg-image [src]="'icons/person_cancel.svg'" (click)="onCancel(found)"></btg-image>
+              }
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+} @else {
+  @for (found of founds; track found.id) {
+    <div class="card">
+      <span><b>Nombre:</b>&ensp;{{ found.nombre }}</span>
+      <span><b>Monto mínimo:</b>&ensp;${{ found.montoMinimo | numberFormat }}</span>
+      <span><b>Categoría:</b>&ensp;{{ found.categoria }}</span>
+      <span><b>Estado:</b>&ensp;{{ found.suscrito ? 'Suscrito' : 'No suscrito' }}</span>
+      <div class="icons-grid">
+        <div class="icon">
+          <span class="label"><b>Suscribir</b></span>
+          @if (!found.suscrito) {
+            <btg-image [src]="'icons/person_check.svg'" (click)="onSuscribe(found)"></btg-image>
+          }
+        </div>
+        <div class="icon">
+          <span class="label"><b>Cancelar</b></span>
+          @if (found.suscrito) {
+            <btg-image [src]="'icons/person_cancel.svg'" (click)="onCancel(found)"></btg-image>
+          }
+        </div>
+      </div>
+    </div>
+  }
+}

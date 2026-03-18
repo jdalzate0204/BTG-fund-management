@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="content">
+    <div class="logo">
+      <btg-logo></btg-logo>
+    </div>
+    @if (isLoggedIn$ | async; as isLoggedIn) {
+      <p><b>Saldo:</b>&ensp;COP&nbsp;${{ (balance$ | async) | numberFormat }}</p>
+    }
+    <div class="button">
+      @if (isLoggedIn$ | async; as isLoggedIn) {
+        <btg-button
+          [textButton]="isLoggedIn ? 'Cerrar sesión' : 'Ingresar'"
+          (handleClick)="actionButton(isLoggedIn)"
+        ></btg-button>
+      } @else {
+        <btg-button
+          [textButton]="'Ingresar'"
+          (handleClick)="actionButton(false)"
+        ></btg-button>
+      }
+    </div>
+  </div>
+</div>

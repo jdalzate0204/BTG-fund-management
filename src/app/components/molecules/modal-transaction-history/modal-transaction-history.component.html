@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="content">
+    <div class="header">
+      <h1>Histórico de transacciones</h1>
+      <button class="close-button" (click)="onClosedClick()">
+        <btg-image [src]="closeIcon"></btg-image>
+      </button>
+    </div>
+    <div class="history">
+      @if ((transactions$ | async)?.length === 0) {
+        <span class="not-found">No se han realizado transacciones aún.</span>
+      } @else {
+        @for (item of transactions$ | async; track item.id) {
+          <div class="card">
+            <span><b>Fecha:</b>&ensp;{{ item.fecha | date: 'short' }}</span>
+            <span><b>Fondo:</b>&ensp;{{ item.fondo }}</span>
+            <span><b>Tipo:</b>&ensp;{{ item.tipo }}</span>
+            <span><b>Monto:</b>&ensp;${{ item.monto | numberFormat }}</span>
+            <span><b>Método:</b>&ensp;{{ item.metodo || 'N/A' }}</span>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+@use '../../../../style/tools/breakpoints.scss' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 50px;
+  height: calc(100vh - 80px - 100px);
+  color: var(--surface-brand-01);
+
+  @include for-mobile {
+    padding: 0 10px;
+  }
+}
+
+h1,
+h2,
+p {
+  font-family: 'moderat-regular';
+  text-align: center;
+}

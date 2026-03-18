@@ -1,0 +1,10 @@
+:host {
+    overflow: clip;
+    overflow-clip-margin: content-box;
+}
+img {
+    max-inline-size: 100%;
+    width: 100%;
+    height: 100%;
+    display: block;
+}

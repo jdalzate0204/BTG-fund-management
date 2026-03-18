@@ -1,3 +1,8 @@
-<h1>titulo medium</h1>
-<h2>titulo regular</h2>
-<p>parrafo light</p>
+<div class="container">
+  @if (isActiveLoader) {
+    <btg-loader></btg-loader>
+  }
+  <btg-header (isActiveLoader)="detectLoader($event)"></btg-header>
+  <router-outlet></router-outlet>
+  <btg-footer></btg-footer>
+</div>

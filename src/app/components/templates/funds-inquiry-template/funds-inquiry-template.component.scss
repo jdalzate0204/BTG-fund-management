@@ -1,0 +1,47 @@
+@use '../../../../style/tools/breakpoints.scss' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 100px;
+
+  @include for-tablet {
+    padding: 30px;
+  }
+
+  @include for-mobile {
+    padding: 20px;
+  }
+}
+
+.container-btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  width: 200px;
+}
+
+h1 {
+  font-family: 'moderat-regular';
+  margin-bottom: 35px;
+  color: var(--surface-brand-01);
+
+  @include for-tablet {
+    margin-top: 20px;
+  }
+
+  @include for-mobile {
+    margin-top: 15px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+}
+
+.content-table {
+  width: 100%;
+}
